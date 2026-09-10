@@ -8,13 +8,14 @@
     "url": "https://github.com/Snyk/snyk-todo-list-demo-app/"
   },
   
-  "scripts": {
+"scripts": {
   "dev": "NODE_OPTIONS=--openssl-legacy-provider nodemon ./app.js",
   "start": "NODE_OPTIONS=--openssl-legacy-provider node app.js",
   "build": "browserify -r jquery > public/js/bundle.js",
   "cleanup": "mongo express-todo --eval 'db.todos.remove({});'",
-  "test": "snyk test",
-  "coverage": "nyc --reporter=html --reporter=text npm test"
+  "test": "tap tests/*.js",
+  "security-test": "snyk test",
+  "coverage": "tap --coverage-report=text tests/*.js"
 },
   
   "dependencies": {
